@@ -4,10 +4,16 @@
 #
 #    pip-compile requirements.in
 #
+amqp==5.3.1
+    # via
+    #   kombu
+    #   superdesk-core
 arabic-reshaper==3.0.0
     # via xhtml2pdf
 arrow==1.3.0
-    # via eve-elastic
+    # via
+    #   eve-elastic
+    #   superdesk-core
 asn1crypto==1.5.1
     # via
     #   oscrypto
@@ -17,15 +23,28 @@ attrs==24.3.0
     # via
     #   flake8-bugbear
     #   superdesk-core
+authlib==1.4.0
+    # via superdesk-core
 babel==2.16.0
-    # via flask-babel
+    # via
+    #   flask-babel
+    #   superdesk-core
+bcrypt==4.2.1
+    # via superdesk-core
 behave==1.2.6
     # via
     #   superdesk-core
     #   wooper
+billiard==4.2.1
+    # via
+    #   celery
+    #   superdesk-core
 blinker==1.9.0
     # via
+    #   elastic-apm
     #   flask
+    #   flask-mail
+    #   raven
     #   sentry-sdk
     #   superdesk-core
 boto3==1.35.90
@@ -41,9 +60,19 @@ botocore==1.35.90
 cachelib==0.9.0
     # via flask-caching
 cachetools==5.5.0
-    # via google-auth
+    # via
+    #   flask-oidc-ex
+    #   google-auth
+    #   superdesk-core
+celery[redis]==5.4.0
+    # via superdesk-core
+cerberus==1.3.7
+    # via
+    #   eve
+    #   superdesk-core
 certifi==2024.12.14
     # via
+    #   elastic-apm
     #   elasticsearch
     #   requests
     #   sentry-sdk
@@ -53,21 +82,45 @@ cffi==1.17.1
     #   cryptography
     #   superdesk-core
 chardet==5.2.0
-    # via reportlab
+    # via
+    #   reportlab
+    #   superdesk-core
 charset-normalizer==3.4.1
     # via
     #   requests
     #   superdesk-core
 ciso8601==2.3.2
-    # via eve-elastic
+    # via
+    #   eve-elastic
+    #   superdesk-core
 click==8.1.8
     # via
     #   -r requirements.in
+    #   celery
+    #   click-didyoumean
+    #   click-plugins
+    #   click-repl
     #   flask
     #   pyhanko
     #   superdesk-core
+click-didyoumean==0.3.1
+    # via
+    #   celery
+    #   superdesk-core
+click-plugins==1.1.1
+    # via
+    #   celery
+    #   superdesk-core
+click-repl==0.3.0
+    # via
+    #   celery
+    #   superdesk-core
+croniter==6.0.0
+    # via superdesk-core
 cryptography==44.0.0
     # via
+    #   authlib
+    #   jwcrypto
     #   moto
     #   pyhanko
     #   pyhanko-certvalidator
@@ -84,12 +137,33 @@ dnspython==2.7.0
     # via
     #   email-validator
     #   pymongo
+    #   superdesk-core
+draftjs-exporter[lxml]==2.1.0
+    # via superdesk-core
+ecs-logging==2.2.0
+    # via
+    #   elastic-apm
+    #   superdesk-core
+elastic-apm[flask]==6.23.0
+    # via superdesk-core
 elasticsearch==7.9.1
-    # via eve-elastic
+    # via
+    #   eve-elastic
+    #   superdesk-core
 email-validator==2.2.0
     # via wtforms
+eve==2.2.0
+    # via superdesk-core
 eve-elastic==7.4.3
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   superdesk-core
+events==0.3
+    # via
+    #   eve
+    #   superdesk-core
+feedparser==6.0.11
+    # via superdesk-core
 flake8==7.1.1
     # via
     #   flake8-bugbear
@@ -102,36 +176,58 @@ flake8-docstrings==1.7.0
 flask==3.1.0
     # via
     #   -r requirements.in
+    #   eve
     #   flask-babel
     #   flask-caching
     #   flask-limiter
+    #   flask-mail
+    #   flask-oidc-ex
     #   flask-pymongo
     #   flask-webpack
     #   flask-wtf
+    #   raven
     #   sentry-sdk
     #   superdesk-core
 flask-babel==4.0.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   superdesk-core
 flask-caching==2.3.0
     # via -r requirements.in
 flask-limiter==3.9.2
     # via -r requirements.in
+flask-mail==0.10.0
+    # via superdesk-core
+flask-oidc-ex==0.6.2
+    # via superdesk-core
 flask-pymongo==2.3.0
     # via -r requirements.in
 flask-webpack==0.1.0
     # via -r requirements.in
 flask-wtf==1.2.2
     # via -r requirements.in
+future==1.0.0
+    # via
+    #   python-twitter
+    #   superdesk-core
 google-auth==2.37.0
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
+hachoir==3.3.0
+    # via superdesk-core
+hermescache==1.0.0
+    # via superdesk-core
 honcho==2.0.0
     # via -r requirements.in
 html5lib==1.1
     # via xhtml2pdf
 httmock==1.4.0
     # via superdesk-core
+httplib2==0.22.0
+    # via
+    #   oauth2client
+    #   superdesk-core
 icalendar==5.0.13
     # via
     #   superdesk-core
@@ -152,6 +248,7 @@ isodate==0.7.2
 itsdangerous==2.2.0
     # via
     #   flask
+    #   flask-oidc-ex
     #   flask-wtf
     #   superdesk-core
 jinja2==3.1.5
@@ -165,14 +262,31 @@ jmespath==1.0.1
     #   boto3
     #   botocore
     #   superdesk-core
+jwcrypto==1.5.6
+    # via
+    #   flask-oidc-ex
+    #   python-jwt
+    #   superdesk-core
+kombu==5.4.2
+    # via
+    #   celery
+    #   superdesk-core
+ldap3==2.9.1
+    # via superdesk-core
 limits==3.14.1
     # via flask-limiter
-lxml==5.3.0
+lxml[html-clean]==5.3.0
     # via
+    #   draftjs-exporter
+    #   lxml-html-clean
     #   python3-saml
     #   superdesk-core
     #   svglib
     #   xmlsec
+lxml-html-clean==0.4.1
+    # via
+    #   lxml
+    #   superdesk-core
 markdown-it-py==3.0.0
     # via rich
 markupsafe==3.0.2
@@ -189,8 +303,18 @@ mccabe==0.7.0
     #   superdesk-core
 mdurl==0.1.2
     # via markdown-it-py
+mongolock @ git+https://github.com/superdesk/mongolock.git@v1
+    # via superdesk-core
 moto[sqs]==5.0.25
     # via superdesk-core
+oauth2client==4.1.3
+    # via
+    #   flask-oidc-ex
+    #   superdesk-core
+oauthlib==3.2.2
+    # via
+    #   requests-oauthlib
+    #   superdesk-core
 ordered-set==4.1.0
     # via flask-limiter
 orderly-set==5.2.3
@@ -219,17 +343,28 @@ pep8==1.7.1
 pillow==11.0.0
     # via
     #   reportlab
+    #   superdesk-core
     #   xhtml2pdf
 pluggy==1.5.0
     # via
     #   pytest
     #   superdesk-core
+prompt-toolkit==3.0.48
+    # via
+    #   click-repl
+    #   superdesk-core
 pyasn1==0.6.1
     # via
+    #   ldap3
+    #   oauth2client
     #   pyasn1-modules
     #   rsa
+    #   superdesk-core
 pyasn1-modules==0.4.1
-    # via google-auth
+    # via
+    #   google-auth
+    #   oauth2client
+    #   superdesk-core
 pycodestyle==2.12.1
     # via
     #   flake8
@@ -256,10 +391,21 @@ pyhanko-certvalidator==0.26.5
     # via
     #   pyhanko
     #   xhtml2pdf
+pyjwt==2.10.1
+    # via superdesk-core
+pymemcache==4.0.0
+    # via superdesk-core
 pymongo==4.10.1
-    # via flask-pymongo
+    # via
+    #   eve
+    #   flask-pymongo
+    #   mongolock
+    #   superdesk-core
 pyparsing==3.2.1
-    # via pyrtf3
+    # via
+    #   httplib2
+    #   pyrtf3
+    #   superdesk-core
 pypdf==5.1.0
     # via xhtml2pdf
 pyrtf3==0.47.5
@@ -278,15 +424,26 @@ python-dateutil==2.9.0.post0
     # via
     #   arrow
     #   botocore
+    #   celery
+    #   croniter
     #   icalendar
     #   moto
     #   superdesk-core
+python-jwt==4.1.0
+    # via
+    #   flask-oidc-ex
+    #   superdesk-core
+python-magic==0.4.27
+    # via superdesk-core
+python-twitter==3.5
+    # via superdesk-core
 python3-saml==1.16.0
     # via
     #   -r requirements.in
     #   superdesk-core
 pytz==2024.2
     # via
+    #   croniter
     #   eve-elastic
     #   flask-babel
     #   icalendar
@@ -298,9 +455,18 @@ pyyaml==6.0.2
     #   superdesk-core
 qrcode==8.0
     # via pyhanko
+raven[flask]==6.10.0
+    # via superdesk-core
+redis==5.2.1
+    # via
+    #   celery
+    #   superdesk-core
+regex==2024.11.6
+    # via superdesk-core
 reportlab==4.2.5
     # via
     #   -r requirements.in
+    #   superdesk-core
     #   svglib
     #   xhtml2pdf
 requests==2.32.3
@@ -309,13 +475,19 @@ requests==2.32.3
     #   moto
     #   pyhanko
     #   pyhanko-certvalidator
+    #   python-twitter
     #   requests-mock
+    #   requests-oauthlib
     #   responses
     #   sams-client
     #   superdesk-core
     #   wooper
 requests-mock==1.12.1
     # via superdesk-core
+requests-oauthlib==2.0.0
+    # via
+    #   python-twitter
+    #   superdesk-core
 responses==0.25.3
     # via
     #   moto
@@ -323,7 +495,10 @@ responses==0.25.3
 rich==13.9.4
     # via flask-limiter
 rsa==4.9
-    # via google-auth
+    # via
+    #   google-auth
+    #   oauth2client
+    #   superdesk-core
 s3transfer==0.10.4
     # via
     #   boto3
@@ -332,10 +507,20 @@ sams-client @ git+https://github.com/superdesk/sams.git@develop#subdirectory=src
     # via superdesk-core
 sentry-sdk[flask]==2.19.2
     # via -r requirements.in
+sgmllib3k==1.0.0
+    # via
+    #   feedparser
+    #   superdesk-core
+simplejson==3.19.3
+    # via
+    #   eve
+    #   superdesk-core
 six==1.17.0
     # via
     #   behave
+    #   flask-oidc-ex
     #   html5lib
+    #   oauth2client
     #   parse-type
     #   python-dateutil
     #   superdesk-core
@@ -356,30 +541,55 @@ tinycss2==1.4.0
     #   cssselect2
     #   svglib
 types-python-dateutil==2.9.0.20241206
-    # via arrow
+    # via
+    #   arrow
+    #   superdesk-core
 typing-extensions==4.12.2
     # via
     #   flask-limiter
+    #   jwcrypto
     #   limits
     #   superdesk-core
+tzdata==2024.2
+    # via
+    #   celery
+    #   kombu
+    #   superdesk-core
 tzlocal==5.2
-    # via pyhanko
+    # via
+    #   pyhanko
+    #   superdesk-core
+unidecode==1.3.8
+    # via superdesk-core
 uritools==4.0.3
     # via pyhanko-certvalidator
 urllib3==2.3.0
     # via
     #   -r requirements.in
     #   botocore
+    #   elastic-apm
     #   elasticsearch
     #   requests
     #   responses
     #   sentry-sdk
+    #   superdesk-core
+vine==5.1.0
+    # via
+    #   amqp
+    #   celery
+    #   kombu
+    #   superdesk-core
+wcwidth==0.2.13
+    # via
+    #   prompt-toolkit
     #   superdesk-core
 webencodings==0.5.1
     # via
     #   cssselect2
     #   html5lib
     #   tinycss2
+websockets==14.1
+    # via superdesk-core
 werkzeug==3.1.3
     # via
     #   flask
@@ -388,7 +598,10 @@ werkzeug==3.1.3
 wooper==0.4.4
     # via superdesk-core
 wrapt==1.17.0
-    # via deprecated
+    # via
+    #   deprecated
+    #   elastic-apm
+    #   superdesk-core
 wtforms[email]==3.2.1
     # via
     #   -r requirements.in
