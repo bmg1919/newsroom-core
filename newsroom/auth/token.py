@@ -2,7 +2,6 @@ from itsdangerous import (
     URLSafeTimedSerializer as Serializer,
     BadSignature,
     SignatureExpired,
-    Tim
 )
 from flask import current_app as app
 
