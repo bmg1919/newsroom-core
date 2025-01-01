@@ -1,4 +1,4 @@
-from flask_script import Manager
+# from flask_script import Manager
 from newsroom.web.factory import get_app
 from flask import Flask
 
