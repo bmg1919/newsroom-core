@@ -1,0 +1,28 @@
+WTForms[email]
+flask
+click
+flask-babel
+flask-webpack
+Flask-WTF
+flask-limiter
+Flask-Caching
+flask_pymongo
+honcho
+gunicorn
+PyRTF3
+xhtml2pdf
+sentry-sdk[flask]
+eve-elastic
+MarkupSafe
+python3-saml
+google-auth
+python-bidi
+urllib3
+
+
+# Fix an issue between xhtml2pdf v0.2.4 and reportlab v3.6.7
+# https://github.com/xhtml2pdf/xhtml2pdf/issues/589
+reportlab>=3.6.11,<4.3
+
+superdesk-core @ git+https://github.com/bmg1919/superdesk-core.git@bmg1919
+superdesk-planning @ git+https://github.com/superdesk/superdesk-planning.git@develop
