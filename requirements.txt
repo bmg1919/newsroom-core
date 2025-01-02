@@ -183,6 +183,7 @@ flask==3.1.0
     #   flask-mail
     #   flask-oidc-ex
     #   flask-pymongo
+    #   flask-script
     #   flask-webpack
     #   flask-wtf
     #   raven
@@ -202,6 +203,8 @@ flask-oidc-ex==0.6.2
     # via superdesk-core
 flask-pymongo==2.3.0
     # via -r requirements.in
+flask-script @ git+https://github.com/bmg1919/flask-script.git@bmg1919
+    # via superdesk-core
 flask-webpack==0.1.0
     # via -r requirements.in
 flask-wtf==1.2.2
